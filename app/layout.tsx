@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Manrope } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { GlowCursor, GLOW_CURSOR_CONFIG } from "@/components/ui/GlowCursor";
+import { ScrollToTopButton } from "@/components/ui/ScrollToTopButton";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -164,6 +165,7 @@ export default function RootLayout({
             className="relative min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-200"
           >
             {children}
+            <ScrollToTopButton />
           </GlowCursor>
         </ThemeProvider>
       </body>
