@@ -1,0 +1,43 @@
+.text-type {
+  display: inline-block;
+  white-space: pre-wrap;
+  min-height: 1.1em;
+}
+
+/* Dedicated single-line style for Hero heading */
+.hero-text-type {
+  display: inline-block;
+  white-space: nowrap !important;
+  min-height: 1.1em;
+}
+
+.hero-text-type .text-type__content {
+  white-space: nowrap !important;
+}
+
+@keyframes text-type-cursor-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.text-type__cursor {
+  margin-left: 0.25rem;
+  display: inline-block;
+  opacity: 1;
+  vertical-align: baseline;
+  animation: text-type-cursor-blink 0.8s ease-in-out infinite;
+}
+
+.hero-text-type .text-type__cursor {
+  display: inline-block !important;
+  white-space: nowrap !important;
+  vertical-align: baseline;
+}
+
+.text-type__cursor--hidden {
+  display: none;
+}

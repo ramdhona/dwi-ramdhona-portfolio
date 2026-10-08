@@ -1,0 +1,112 @@
+/* MagicBento CSS Styles */
+
+.magic-bento-card {
+  position: relative;
+  overflow: hidden;
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 350px;
+  --glow-color: 37, 99, 235;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.35s ease,
+    background-color 0.25s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Ensure inner contents sit comfortably above the background spotlight */
+.magic-bento-card > :not(.magic-bento-spotlight):not(.magic-bento-particle):not(.magic-bento-ripple) {
+  position: relative;
+  z-index: 5;
+}
+
+/* Border glow effect using mask composite */
+.magic-bento-card--border-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1.5px;
+  background: radial-gradient(
+    var(--glow-radius, 350px) circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(var(--glow-color, 37, 99, 235), calc(var(--glow-intensity, 0) * 0.9)) 0%,
+    rgba(96, 165, 250, calc(var(--glow-intensity, 0) * 0.5)) 25%,
+    transparent 65%
+  );
+  border-radius: inherit;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+/* Subtle glow enhancement & card elevation (2-4px) on hover */
+@media (hover: hover) and (pointer: fine) {
+  .magic-bento-card:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 8px 24px -2px rgba(37, 99, 235, 0.16),
+      0 0 16px 1px rgba(37, 99, 235, 0.1);
+  }
+
+  .dark .magic-bento-card:hover,
+  :is(.dark) .magic-bento-card:hover {
+    box-shadow:
+      0 10px 26px -2px rgba(37, 99, 235, 0.22),
+      0 0 18px 1px rgba(37, 99, 235, 0.14);
+  }
+}
+
+/* Card localized spotlight */
+.magic-bento-spotlight {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    var(--glow-radius, 350px) circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+    rgba(var(--glow-color, 37, 99, 235), 0.12) 0%,
+    rgba(96, 165, 250, 0.05) 30%,
+    transparent 70%
+  );
+  will-change: opacity;
+}
+
+/* Particle styling */
+.magic-bento-particle {
+  position: absolute;
+  width: 3.5px;
+  height: 3.5px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.magic-bento-particle::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: rgba(var(--glow-color, 37, 99, 235), 0.2);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Ripple styling */
+.magic-bento-ripple {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 4;
+}

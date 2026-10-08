@@ -1,0 +1,30 @@
+.glow-cursor-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.glow-cursor-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+  background: transparent !important;
+  z-index: 45;
+}
+
+.glow-cursor-content {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+@media (pointer: coarse), (max-width: 1023px) {
+  .glow-cursor-canvas {
+    display: none !important;
+  }
+}

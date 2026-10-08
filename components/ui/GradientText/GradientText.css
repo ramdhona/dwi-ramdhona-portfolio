@@ -1,0 +1,66 @@
+.animated-gradient-text {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.animated-gradient-text.with-border {
+  margin: 0 auto;
+  max-width: fit-content;
+  border-radius: 1.25rem;
+  backdrop-filter: blur(10px);
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gradient-overlay::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: inherit;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #120F17;
+  z-index: -1;
+}
+
+.text-content {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  white-space: nowrap;
+}
+
+@keyframes gradient-pulse {
+  0%, 100% {
+    filter: brightness(1) saturate(1);
+  }
+  50% {
+    filter: brightness(1.25) saturate(1.2);
+  }
+}
+
+.text-content.animate-gradient {
+  animation: gradient-pulse var(--animation-speed, 6s) ease-in-out infinite;
+  will-change: filter;
+}

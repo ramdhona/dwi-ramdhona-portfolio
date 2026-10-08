@@ -1,26 +1,160 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary-blue: #3B82F6;
+  --color-primary-dark: #1D4ED8;
+  --color-accent-gold: #D4AF6A;
+  --font-heading: var(--font-space-grotesk), sans-serif;
+  --font-sans: var(--font-manrope), sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --card-bg: #FFFFFF;
+  --nav-bg: rgba(248, 250, 252, 0.85);
+  --nav-border: #E2E8F0;
+  --grid-color: rgba(15, 23, 42, 0.06);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark,
+:is(.dark) {
+  --background: #0B0F17;
+  --foreground: #F8FAFC;
+  --card-bg: #0D1525;
+  --nav-bg: rgba(11, 15, 23, 0.85);
+  --nav-border: rgba(255, 255, 255, 0.05);
+  --grid-color: rgba(255, 255, 255, 0.06);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Seamless Parent Grid Pattern for Main Content Layout */
+.main-layout {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--background);
+}
+
+.main-layout::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-repeat: repeat;
+  background-position: center top;
+}
+
+.main-layout > * {
+  position: relative;
+  z-index: 1;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
+
+/* GlowCursor Layout & Canvas Rules */
+.glow-cursor-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.glow-cursor-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+  background: transparent !important;
+  z-index: 45;
+}
+
+.glow-cursor-content {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+@media (pointer: coarse) {
+  .glow-cursor-canvas {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   Local Card Hover & Image Zoom System
+   Portfolio (Projects) & Certificates Cards
+   ========================================================================== */
+
+.interactive-card-grid {
+  isolation: isolate;
+}
+
+.interactive-card {
+  position: relative;
+  will-change: transform, box-shadow;
+  transition:
+    transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 450ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 300ms ease,
+    background-color 300ms ease;
+}
+
+.interactive-card .card-image-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.interactive-card .card-image {
+  transform: scale(1);
+  transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.interactive-card .card-title {
+  transition: color 300ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  /* Active Hovered Card ONLY (strictly local, zero sibling changes) */
+  .interactive-card:hover {
+    z-index: 20;
+    transform: translateY(-6px) scale(1.02);
+    border-color: rgba(37, 99, 235, 0.6) !important;
+    box-shadow:
+      0 12px 28px -4px rgba(37, 99, 235, 0.18),
+      0 0 16px 1px rgba(37, 99, 235, 0.12) !important;
+  }
+
+  .dark .interactive-card:hover,
+  :is(.dark) .interactive-card:hover {
+    border-color: rgba(37, 99, 235, 0.6) !important;
+    box-shadow:
+      0 14px 30px -4px rgba(37, 99, 235, 0.25),
+      0 0 18px 1px rgba(37, 99, 235, 0.16) !important;
+  }
+
+  /* Title color changes to blue (#2563EB) */
+  .interactive-card:hover .card-title {
+    color: #2563EB !important;
+  }
+
+  /* Image Hover Zoom: scale(1.06) strictly within the active card */
+  .interactive-card:hover .card-image {
+    transform: scale(1.06);
+  }
+}
+
