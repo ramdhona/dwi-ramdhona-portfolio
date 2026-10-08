@@ -24,7 +24,7 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://dwiramdhona.com"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://dwiramdhona.vercel.app"
   ),
   title: {
     default: "Dwi Ramdhona — Web Developer & UI/UX Designer",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     "TypeScript",
     "Tailwind CSS",
   ],
-  authors: [{ name: "Dwi Ramdhona", url: "https://dwiramdhona.com" }],
+  authors: [{ name: "Dwi Ramdhona", url: "https://dwiramdhona.vercel.app" }],
   creator: "Dwi Ramdhona",
   alternates: {
     canonical: "/",
@@ -85,6 +85,36 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://dwiramdhona.vercel.app/#website",
+      "url": "https://dwiramdhona.vercel.app",
+      "name": "Dwi Ramdhona — Web Developer & UI/UX Designer Portfolio",
+      "description":
+        "Personal portfolio of Dwi Ramdhona, S.Kom — Web Developer & UI/UX Designer.",
+      "publisher": {
+        "@id": "https://dwiramdhona.vercel.app/#person",
+      },
+      "inLanguage": "id-ID",
+    },
+    {
+      "@type": "Person",
+      "@id": "https://dwiramdhona.vercel.app/#person",
+      "name": "Dwi Ramdhona",
+      "jobTitle": "Web Developer & UI/UX Designer",
+      "url": "https://dwiramdhona.vercel.app",
+      "sameAs": [
+        "https://github.com/ramdhona",
+        "https://www.linkedin.com/in/dwi-ramdhona-300560188/",
+        "https://instagram.com/ramdhona_666",
+      ],
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -102,6 +132,12 @@ export default function RootLayout({
           href="/assets/lanyard/card-front.webp"
           as="image"
           type="image/webp"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd),
+          }}
         />
         <script
           dangerouslySetInnerHTML={{

@@ -34,9 +34,13 @@ export async function generateMetadata({
   return {
     title: `${project.title} — Dwi Ramdhona`,
     description: project.description,
+    alternates: {
+      canonical: `/portfolio/${project.slug}`,
+    },
     openGraph: {
       title: `${project.title} — Portfolio Dwi Ramdhona`,
       description: project.description,
+      url: `/portfolio/${project.slug}`,
       images: [
         {
           url: project.image.primary,

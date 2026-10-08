@@ -43,16 +43,17 @@ export function PortfolioMediaSection({
         type="button"
         onClick={() => setLightboxIndex(0)}
         aria-label={`View project image: ${title}`}
-        className="group relative block w-full h-[65vh] sm:h-[80vh] lg:h-[calc(100vh-7rem)] min-h-[480px] sm:min-h-[600px] lg:min-h-[720px] rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/90 dark:border-white/[0.08] bg-slate-100/90 dark:bg-[#0D1422] shadow-xl dark:shadow-2xl dark:shadow-black/50 mb-12 sm:mb-16 cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]"
+        className="group relative block w-full lg:h-[calc(100vh-7rem)] lg:min-h-[720px] rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/90 dark:border-white/[0.08] bg-slate-100/90 dark:bg-[#0D1422] shadow-xl dark:shadow-2xl dark:shadow-black/50 mb-12 sm:mb-16 cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]"
       >
         <Image
           src={image}
           alt={`Mockup showcase untuk ${title}`}
-          fill
+          width={1536}
+          height={1024}
           priority
           unoptimized={isExternalMain}
-          sizes="(max-width: 1536px) 100vw, 1400px"
-          className="object-cover object-top sm:object-center transition-transform duration-500 ease-out group-hover:scale-105"
+          sizes="(max-width: 1024px) 100vw, (max-width: 1536px) 100vw, 1400px"
+          className="block w-full h-auto object-contain lg:absolute lg:inset-0 lg:w-full lg:h-full lg:object-cover lg:object-center transition-transform duration-500 ease-out group-hover:scale-105"
         />
 
         {/* Hover Zoom Overlay Hint */}

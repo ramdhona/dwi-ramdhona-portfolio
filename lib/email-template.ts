@@ -141,8 +141,8 @@ export function generateContactEmail(payload: ContactEmailPayload) {
                       Sent from Dwi Ramdhona's Portfolio
                     </p>
                     <p style="margin: 0 0 10px 0; font-size: 12px; line-height: 1.4;">
-                      <a href="https://dwi-ramdhona.vercel.app" target="_blank" style="color: #2563EB; text-decoration: underline;">
-                        dwi-ramdhona.vercel.app
+                      <a href="https://dwiramdhona.vercel.app" target="_blank" style="color: #2563EB; text-decoration: underline;">
+                        dwiramdhona.vercel.app
                       </a>
                     </p>
                     <p style="margin: 0; font-size: 11px; color: #94A3B8; line-height: 1.4;">
@@ -161,7 +161,7 @@ export function generateContactEmail(payload: ContactEmailPayload) {
 </body>
 </html>`;
 
-  const text = `New Contact Message\nSomeone has contacted you through your portfolio website.\n\nName: ${name}\nEmail: ${email}\nSubject: ${rawSubject || "New Message"}\n\nMessage:\n${message}\n\n---\nReply to: ${email}\nSent from Dwi Ramdhona's Portfolio (https://dwi-ramdhona.vercel.app)\n© 2026 Dwi Ramdhona`;
+  const text = `New Contact Message\nSomeone has contacted you through your portfolio website.\n\nName: ${name}\nEmail: ${email}\nSubject: ${rawSubject || "New Message"}\n\nMessage:\n${message}\n\n---\nReply to: ${email}\nSent from Dwi Ramdhona's Portfolio (https://dwiramdhona.vercel.app)\n© 2026 Dwi Ramdhona`;
 
   return {
     subject: formattedSubject,
