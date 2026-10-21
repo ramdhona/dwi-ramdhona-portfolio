@@ -58,8 +58,8 @@ export const projects: Project[] = [
   id: "19",
   slug: "sia-sd-sekolah-dasar",
   title: "SIA-SD Sekolah Dasar",
-  category: "UI/UX Design",
-  badgeCategory: "Web Application",
+  category: "Website",
+  badgeCategory: "Website",
   description:
     "SIA-SD (Sistem Informasi Akademik Sekolah Dasar) merupakan aplikasi web untuk mendukung pengelolaan kegiatan akademik sekolah melalui dashboard terintegrasi, manajemen data, presensi, jadwal pelajaran, dan penilaian siswa berdasarkan peran pengguna.",
   image: {
