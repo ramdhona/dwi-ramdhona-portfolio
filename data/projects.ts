@@ -53,7 +53,65 @@ export function sortProjectsByNewest(projectList: Project[]): Project[] {
 }
 
 export const projects: Project[] = [
-  // 18.
+  //19. SIA SD
+  {
+  id: "19",
+  slug: "sia-sd-sekolah-dasar",
+  title: "SIA-SD Sekolah Dasar",
+  category: "UI/UX Design",
+  badgeCategory: "Web Application",
+  description:
+    "SIA-SD (Sistem Informasi Akademik Sekolah Dasar) merupakan aplikasi web untuk mendukung pengelolaan kegiatan akademik sekolah melalui dashboard terintegrasi, manajemen data, presensi, jadwal pelajaran, dan penilaian siswa berdasarkan peran pengguna.",
+  image: {
+    primary: "/assets/portfolio/Mockup UI_UX SIA Sekolah Dasar.png",
+  },
+  technologyStack: [
+    {
+      name: "Next.js",
+      icon: "/assets/techstack/next_js.webp",
+    },
+    {
+      name: "React",
+      icon: "/assets/techstack/react.webp",
+    },
+    {
+      name: "TypeScript",
+      icon: "/assets/techstack/typescript.webp",
+    },
+    {
+      name: "Tailwind CSS",
+      icon: "/assets/techstack/tailwind.webp",
+    },
+    {
+      name: "Laravel",
+      icon: "/assets/techstack/laravel.webp",
+    },
+    {
+      name: "MySQL",
+      icon: "/assets/techstack/mysql.webp",
+    },
+  ],
+  link: "https://sia-sd.vercel.app",
+  problem:
+    "Pengelolaan informasi akademik sekolah dasar membutuhkan sistem yang terstruktur untuk memudahkan akses data, pemantauan kegiatan sekolah, pengelolaan kelas, presensi, serta penyampaian informasi akademik kepada pengguna dengan peran yang berbeda.",
+  solution:
+    "Merancang aplikasi web dengan navigasi terstruktur, dashboard informatif, komponen UI yang konsisten, serta akses berdasarkan peran pengguna. Antarmuka menggunakan warna merah sebagai identitas utama dengan tata letak yang mengutamakan keterbacaan, kemudahan navigasi, dan konsistensi pengalaman pengguna.",
+  features: [
+    "Dashboard Akademik - Menampilkan ringkasan informasi dan statistik sekolah.",
+    "Multi-Role Dashboard - Mendukung peran Admin, Guru, Siswa, Orang Tua, dan Kepala Sekolah.",
+    "Manajemen Data - Mendukung pengelolaan data akademik dan kelas.",
+    "Kehadiran dan Presensi - Menyediakan halaman untuk pengelolaan dan pemantauan kehadiran siswa.",
+    "Jadwal Pelajaran - Menampilkan informasi jadwal pembelajaran.",
+    "Penilaian dan Rapor - Mendukung pengelolaan serta pemantauan nilai akademik siswa.",
+    "Kalender Akademik - Menampilkan agenda dan kegiatan sekolah.",
+    "Autentikasi Multi-Role - Menyediakan halaman login berdasarkan kategori pengguna.",
+    "Responsive Design - Mengoptimalkan tampilan antarmuka untuk desktop, tablet, dan perangkat mobile.",
+  ],
+  screenshotGallery: [
+    "/assets/portfolio/Mockup UI_UX SIA Sekolah Dasar.png",
+  ],
+},
+  // 18. Website RT 05 RW 08 Kelurahan Padangsari
   {
     id: "18",
     slug: "website-rt-05-rw-08-padangsari",
